@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Complete the template</title>
+    </head>
+    <body>
+        <h2>{{ school.name }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Student ID</th>
+                    <th>Term</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in school.students %}
+                <tr>
+                    <td>
+                        {{ student.name }}
+                    </td>
+                    <td>
+                        {{ student.student_id }}
+                    </td>                    
+                    <td>
+                        {{ student.term }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
