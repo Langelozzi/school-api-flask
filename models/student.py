@@ -21,9 +21,9 @@ class Student:
             ValueError: if the term is not a valid integer
         """
         
-        if (name == None) or (type(name) != str):
+        if (not name) or (type(name) is not str):
             raise ValueError
-        if (type(student_id) != str) or (len(student_id) != 9) or (student_id[0] != 'A') or (student_id[1] != '0'):
+        if (type(student_id) is not str) or (student_id[2:].isdigit()) or (len(student_id[2:]) != 7) or (student_id[:2] != "A0"):
             raise ValueError
         if (type(term) != int):
             raise ValueError
