@@ -53,7 +53,7 @@ class School:
         try:
             return correct_student
         except:
-            return None
+            return None #if you dont do a return statement at all then it also returns None
 
     def get_by_name(self, name):
         """This method gets all students with the specific name and returns those objects
@@ -66,6 +66,13 @@ class School:
         """
         
         matches = list()
+
+        # doing the same thing using list comprehension
+        '''matches = [
+            student
+            for student in self.students
+            if student.name == name
+        ]'''
 
         for student in self.students:
             if student.name == name:
@@ -105,6 +112,14 @@ class School:
         """This method writes the changes you made to the school to the JSON file
         """
         
+        # Using list comprehension to create list
+        '''
+        data = [
+            student.to_dict()
+            for student in self.students
+        ]
+        '''
+
         json_data = list()
         for student in self.students:
             json_data.append(student.to_dict())

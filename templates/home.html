@@ -6,16 +6,16 @@
         <h2>{{ school.name }}</h2>
         <table>
             <thead>
-                <tr>
+                <tr> <!-- tr is a table row -->
                     <th>Name</th>
-                    <th>Student ID</th>
+                    <th>Student ID</th> <!-- th is a table heading cell -->
                     <th>Term</th>
                 </tr>
             </thead>
             <tbody>
                 {% for student in school.students %}
                 <tr>
-                    <td>
+                    <td> <!-- td is a table cell -->
                         {{ student.name }}
                     </td>
                     <td>

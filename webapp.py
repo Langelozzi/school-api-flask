@@ -8,6 +8,7 @@ from flask import Flask, jsonify, request, render_template
 from models.school import School
 from models.student import Student
 
+# Creates an instance of a flask application
 app = Flask(__name__)
 
 # Homepage with table of students
@@ -32,8 +33,16 @@ def get_students():
     """
 
     bcit = School("BCIT")
-    as_dicts = list()
 
+    # Same as below but using list comprehension
+    '''
+    data = [
+        student.to_dict()
+        for student in bcit.students
+    ]
+    '''
+
+    as_dicts = list()
     for student in bcit.students:
         as_dicts.append(student.to_dict())
 
@@ -41,7 +50,7 @@ def get_students():
 
 # Get a single student by student id
 @app.route("/student/<string:student_id>", methods=["GET"])
-def get_student(student_id = None):
+def get_one_student(student_id = None):
     """This function returns a single student as a JSON object
 
     Args:
@@ -76,6 +85,8 @@ def add_student():
     data = request.json
 
     try:
+        # Using dictionary unpacking to create the new student because keys are same name as attributes
+        '''new_student = Student(**data)'''
         new_student = Student(data["name"], data["student_id"], data["term"])
     except ValueError:
         return "Invalid data entries", 400
